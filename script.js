@@ -13,3 +13,5 @@ const logAllPairs = () => {
 };
 
 logAllPairs(elements);
+
+// checking git status
