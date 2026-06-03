@@ -1,5 +1,16 @@
 ////////////// Merge two sorted arrays //////////////
 
+///// TELL ME WHAT BLOCK WILL BE EXECUTED
+// const arr = undefined;
+
+// if (!arr) {
+// 	console.log(
+// 		'this block will run because - !undefined => here undefined is a falsy value which will be converted to false and ! will make it true and execute the block. so, !undefinded => !false => true',
+// 	);
+// } else {
+// 	console.log();
+// }
+
 const arr1 = [1, 3, 5, 7];
 const arr2 = [2, 4, 6, 8];
 
@@ -16,16 +27,55 @@ console.log(mergedArray);
 function mergeSortedArr2(arr1, arr2) {
 	// check inputs
 	if (!arr1 || !arr2) {
+		// ! checks if the array is falsy -> so falsy values are - 0, '', null, undefined, false
+		// it does not check if it is an arry or not - if we wanted to simply check that then we had to use isArray()
 		return 'Please provide valid arrays';
 	}
 
 	// index variables for both arrays
 	let i = 0;
 	let j = 0;
-	const merged = [];
-	// loop (while)
+	let merged = [];
+	// Run this loop when both array has length
+	while (i < arr1.length && j < arr2.length) {
+		if (arr1[i] < arr2[j]) {
+			// keep the small one -so, arry1tem
+			// increment the index
+			merged.push(arr1[i]);
+			i++;
+		} else if (arr1[i] === arr2[j]) {
+			// either keep both values or only one values
+			// for now we are keeping duplicate values
+			merged.push(arr1[i]);
+			merged.push(arr2[j]);
+			// increment both indexes
+			i++;
+			j++;
+		} else {
+			// if arr2 > arr1
+			merged.push(arr2[j]);
+			j++;
+		}
+		// array1 item has lenght >= 0
+		// same check for 2nd array
+	}
+	// Run this loop when only one of the two has a lenght
+	// this run if only arr1 has length but not arr2
+	while (i < arr1.length) {
+		merged.push(arr1[i]);
+		i++;
+	}
+
+	// this run if arr2 has lenght but arr1 has not
+	while (i < arr2.length) {
+		merged.push(arr2[j]);
+		j++;
+	}
+	return merged;
 }
-mergeSortedArr2(arr1, arr2);
+
+const merge2ndSolution = mergeSortedArr2(arr1, arr2);
+console.log('merge sort second - while loop:', merge2ndSolution);
 
 /////////// Reverse a string ///////////
 
