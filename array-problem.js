@@ -11,6 +11,7 @@
 // 	console.log();
 // }
 
+////////////////// Merge sorted array : Given two arrays merge them into one and sort in ascending order
 const arr1 = [1, 3, 5, 7];
 const arr2 = [2, 4, 6, 8];
 
@@ -22,60 +23,101 @@ const mergeSortedArrays = (arr1, arr2) => {
 const mergedArray = mergeSortedArrays(arr1, arr2);
 console.log(mergedArray);
 
-// solution 2
-
-function mergeSortedArr2(arr1, arr2) {
-	// check inputs
-	if (!arr1 || !arr2) {
-		// ! checks if the array is falsy -> so falsy values are - 0, '', null, undefined, false
-		// it does not check if it is an arry or not - if we wanted to simply check that then we had to use isArray()
-		return 'Please provide valid arrays';
-	}
-
-	// index variables for both arrays
+// solution 3 (two pointer approach)
+//////////////////////////// So the two-pointer merge technique only works correctly when both arrays are already sorted. lets say arr2 has greater length => const arr2 = [2, 4, 6, 8, 24, 18, 13, 80]; IT will not be like this, the order must be sorted correctly beforehand. so, the correct input is - const arr2 = [2, 4, 6, 8, 13, 18, 24, 80]; SO, now jokhon only kono akta array loop korbe tokhon to compare korar kew nai and already they are sorted tokhon just oi akta arry e loop hocce. AND most impontantly in a two pointer solution we have two index tracker -- and 1. compare two current values 2.move only the pointer of the value you pushed
+///////////////////////////
+const mergeSortArr = (arr1, arr2) => {
+	// first arr elements
+	let firstArrItem = arr1[0];
+	// sec arr elements
+	let secArrItem = arr2[0];
+	// final returned arr
+	let finalArr = [];
+	// indexs
 	let i = 0;
 	let j = 0;
-	let merged = [];
-	// Run this loop when both array has length
+
+	// while loop
 	while (i < arr1.length && j < arr2.length) {
 		if (arr1[i] < arr2[j]) {
-			// keep the small one -so, arry1tem
-			// increment the index
-			merged.push(arr1[i]);
+			finalArr.push(arr1[i]);
 			i++;
 		} else if (arr1[i] === arr2[j]) {
-			// either keep both values or only one values
-			// for now we are keeping duplicate values
-			merged.push(arr1[i]);
-			merged.push(arr2[j]);
-			// increment both indexes
+			finalArr.push(arr1[i]);
+			finalArr.push(arr2[j]);
 			i++;
 			j++;
 		} else {
-			// if arr2 > arr1
-			merged.push(arr2[j]);
+			finalArr.push(arr2[j]);
 			j++;
 		}
-		// array1 item has lenght >= 0
-		// same check for 2nd array
 	}
-	// Run this loop when only one of the two has a lenght
-	// this run if only arr1 has length but not arr2
 	while (i < arr1.length) {
-		merged.push(arr1[i]);
+		finalArr.push(arr1[i]);
 		i++;
 	}
-
-	// this run if arr2 has lenght but arr1 has not
-	while (i < arr2.length) {
-		merged.push(arr2[j]);
+	while (j < arr2.length) {
+		finalArr.push(arr2[j]);
 		j++;
 	}
-	return merged;
-}
+	return finalArr;
+};
+const result = mergeSortArr(arr1, arr2);
+console.log('my approach', result);
 
-const merge2ndSolution = mergeSortedArr2(arr1, arr2);
-console.log('merge sort second - while loop:', merge2ndSolution);
+// solution 2
+// function mergeSortedArr2(arr1, arr2) {
+// 	// check inputs
+// 	if (!arr1 || !arr2) {
+// 		// ! checks if the array is falsy -> so falsy values are - 0, '', null, undefined, false
+// 		// it does not check if it is an arry or not - if we wanted to simply check that then we had to use isArray()
+// 		return 'Please provide valid arrays';
+// 	}
+
+// 	// index variables for both arrays
+// 	let i = 0;
+// 	let j = 0;
+// 	let merged = [];
+// 	// Run this loop when both array has length
+// 	while (i < arr1.length && j < arr2.length) {
+// 		if (arr1[i] < arr2[j]) {
+// 			// keep the small one -so, arry1tem
+// 			// increment the index
+// 			merged.push(arr1[i]);
+// 			i++;
+// 		} else if (arr1[i] === arr2[j]) {
+// 			// either keep both values or only one values
+// 			// for now we are keeping duplicate values
+// 			merged.push(arr1[i]);
+// 			merged.push(arr2[j]);
+// 			// increment both indexes
+// 			i++;
+// 			j++;
+// 		} else {
+// 			// if arr2 > arr1
+// 			merged.push(arr2[j]);
+// 			j++;
+// 		}
+// 		// array1 item has lenght >= 0
+// 		// same check for 2nd array
+// 	}
+// 	// Run this loop when only one of the two has a lenght
+// 	// this run if only arr1 has length but not arr2
+// 	while (i < arr1.length) {
+// 		merged.push(arr1[i]);
+// 		i++;
+// 	}
+
+// 	// this run if arr2 has lenght but arr1 has not
+// 	while (i < arr2.length) {
+// 		merged.push(arr2[j]);
+// 		j++;
+// 	}
+// 	return merged;
+// }
+
+// const merge2ndSolution = mergeSortedArr2(arr1, arr2);
+// console.log('merge sort second - while loop:', merge2ndSolution);
 
 /////////// Reverse a string ///////////
 
