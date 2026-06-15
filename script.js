@@ -1,6 +1,7 @@
 // imports
 import { add } from './math.js';
 import * as array from './array-problem.js';
+import * as hash from './hash-table/simpleHashDS.js';
 
 // log all pairs of elements in an array
 
