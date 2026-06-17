@@ -21,7 +21,7 @@ const mergeSortedArrays = (arr1, arr2) => {
 	return sortedArr;
 };
 const mergedArray = mergeSortedArrays(arr1, arr2);
-console.log(mergedArray);
+// console.log(mergedArray);
 
 // solution 3 (two pointer approach)
 //////////////////////////// So the two-pointer merge technique only works correctly when both arrays are already sorted. lets say arr2 has greater length => const arr2 = [2, 4, 6, 8, 24, 18, 13, 80]; IT will not be like this, the order must be sorted correctly beforehand. so, the correct input is - const arr2 = [2, 4, 6, 8, 13, 18, 24, 80]; SO, now jokhon only kono akta array loop korbe tokhon to compare korar kew nai and already they are sorted tokhon just oi akta arry e loop hocce. AND most impontantly in a two pointer solution we have two index tracker -- and 1. compare two current values 2.move only the pointer of the value you pushed
@@ -63,7 +63,7 @@ const mergeSortArr = (arr1, arr2) => {
 	return finalArr;
 };
 const result = mergeSortArr(arr1, arr2);
-console.log('my approach', result);
+// console.log('my approach', result);
 
 // solution 2
 // function mergeSortedArr2(arr1, arr2) {
@@ -138,7 +138,7 @@ function reverseString(str) {
 }
 
 const reversedString = reverseString(string);
-console.log(reversedString);
+// console.log(reversedString);
 
 //// if we want to do a clean approach
 const clean1 = str => str.split('').reverse().join('');

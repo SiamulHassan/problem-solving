@@ -32,8 +32,32 @@ class HashTable {
 		}
 		return undefined;
 	}
+	keys() {
+		let keysArr = [];
+		for (let i = 0; i < this.data.length; i++) {
+			// this.data => the whole hash table or bucket table
+			// this.data[i] => each row of the hash table or each bucket or bucket index (represents individual bucket)
+			// if we have bucket then we will loop our buck array to get all the bucket items inside it.[[],[]]
+
+			const bucket = this.data[i]; // each bucket
+			if (bucket) {
+				for (let j = 0; j < bucket.length; j++) {
+					keysArr.push(bucket[j][0]);
+				}
+			}
+		}
+		return keysArr;
+	}
 }
-const testHash = new HashTable(50);
+const testHash = new HashTable(20);
+testHash.set('paper', 'nice paper !');
+testHash.set('apple', 'nice apple !');
+testHash.set('pen', 'nice pen !');
+testHash.set('book', 'nice book !');
+testHash.set('mouse', 'nice mouse !');
+console.log('testHash obj', testHash);
+console.log('testHash keys', testHash.keys());
+
 // console.log('seee hash', testHash._hash('appleeee'));
-console.log('set hash', testHash.set('paper', 'nice paper !'));
-console.log('get hash', testHash.get('paper'));
+// console.log('set hash', testHash.set('paper', 'nice paper !'));
+// console.log('get hash', testHash.get('paper'));

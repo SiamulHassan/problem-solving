@@ -11,7 +11,8 @@ const logAllPairs = () => {
 	elements.forEach((ele, index) => {
 		elements.forEach((ele2, index2) => {
 			if (index <= index2) {
-				console.log(`Pair: ${ele}, ${ele2}`);
+				return; // remove this return - it is just for commenting the console
+				// console.log(`Pair: ${ele}, ${ele2}`);
 			}
 		});
 	});
@@ -31,7 +32,7 @@ const containsCommonElements = (arr1, arr2) => {
 	arr1.forEach(ele => {
 		arr2.forEach(ele2 => {
 			if (ele === ele2) {
-				console.log(`Common element found: ${ele}`);
+				// console.log(`Common element found: ${ele}`);
 				return true;
 			} else {
 				return false;
@@ -51,16 +52,16 @@ const containCommonItems2 = (arr1, arr2) => {
 		if (!convertedObject[item]) {
 			convertedObject[item] = true;
 		} else {
-			console.log(`Common element found: ${item}`);
+			// console.log(`Common element found: ${item}`);
 			return true; // early return if common item is found
 		}
-		console.log(convertedObject);
+		// console.log(convertedObject);
 	});
 	// then loop through the second array and check if the object contains the item
 	arr2.forEach(item => {
 		if (convertedObject[item]) {
 			// common item found
-			console.log('conveted obj has item:', item);
+			// console.log('conveted obj has item:', item);
 			return true;
 		}
 		return false; // no common item found
