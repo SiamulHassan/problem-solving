@@ -61,3 +61,25 @@ console.log('testHash keys', testHash.keys());
 // console.log('seee hash', testHash._hash('appleeee'));
 // console.log('set hash', testHash.set('paper', 'nice paper !'));
 // console.log('get hash', testHash.get('paper'));
+
+/////////////////// find next recurring element
+
+const inputArr = [1, 3, 5, 6, 7, 3, 9, 8];
+const containingEl = {};
+const findRecurringEl = input => {
+	// check
+	if (!input || input.length === 0) return;
+	for (let i = 0; i < input.length; i++) {
+		if (!containingEl[input[i]]) {
+			// if not present in the obj then push
+			containingEl[i] = input[i];
+		} else {
+			// if already present then return the element
+			return input[i];
+		}
+	}
+	return undefined; 
+};
+
+const result = findRecurringEl(inputArr);
+console.log('recurrent element :', result);
