@@ -2,6 +2,8 @@
 import { add } from './math.js';
 import * as array from './array-problem.js';
 import * as hash from './hash-table/simpleHashDS.js';
+import * as linkedlists from './linked-lists/linkedlists.js';
+import * as arrProblems from './array-problems/creatingArrDS.js';
 
 // log all pairs of elements in an array
 
@@ -69,3 +71,5 @@ const containCommonItems2 = (arr1, arr2) => {
 };
 containCommonItems2(arr1, arr2);
 // O (a+b)
+
+//////////////////////// Loops
