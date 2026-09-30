@@ -10,6 +10,7 @@ class NodeCreation {
 
 class NodeList {
 	constructor(value) {
+		if (!value) throw new Error('Must assign a value');
 		this.head = {
 			value: value,
 			next: null, // when we will call the class then constructor will run and create the very first object. starting point e only head diye start hocche so no 'next' reference and that's why next is null. next is basically is an object which will contain the next value and next pointer / null => nex{value:x, next:null}
@@ -59,7 +60,7 @@ class NodeList {
 		while (linkedListIndex < index - 1) {
 			// if linkedListIndex is less than index-1  --- then point to next node and increment the index
 			// so, index 0 will point 1 here, and if our target index is 2 then next loop will not occur but we got index 1 (next node --> the previous node of index 2)
-			currentNode = currentNode.next;
+			currentNode = currentNode.next; // which is the next node object
 			linkedListIndex++;
 		}
 		// now we got our previous node (node before our target index where we are assignig new node)
@@ -68,6 +69,24 @@ class NodeList {
 		newNode.next = currentNode.next; // current node (previous node) was pointing to index 2 -for old index it was 5
 		currentNode.next = newNode;
 		//NOTE: 68 AND 69 NO LINE EXACT EI ORDER EI HOTE HOBE, TA NA HOLE AMRA currentNode.next er value ke overwrite kortam and loss it.
+		this.length++;
+	}
+
+	// print node values within an array data structur
+	printNodes() {
+		let nodeArr = [];
+		// loop through the values of nodes - and we do not know when to stop exactly so while loop will be used
+		// take current object and check next propery and move forward to next nodes
+		let currentNode = this.head;
+		while (currentNode != null) {
+			// the idea is last node's next will point to null --> so, the node coming after the last node is null.
+			// do this
+			const value = currentNode.value;
+			nodeArr.push(value);
+			// point to next node
+			currentNode = currentNode.next;
+		}
+		return nodeArr;
 	}
 }
 
@@ -79,6 +98,7 @@ nodeList1.append(16);
 nodeList1.prepend(25); // o(1)
 nodeList1.insert(2, 69);
 console.log('singly linked lists', nodeList1);
+console.log('printNodes arr', nodeList1.printNodes());
 
 //
 // linked list collection of nodes. node e 2ta jinish thake 1. vlaue 2. next node pointer  ; first node ke bola hoy head and last node ke bola hoy tail -- basically they are nodes. Jokhon amar only 1 ta node thaktese tokhon setai head and tail mean korbe
