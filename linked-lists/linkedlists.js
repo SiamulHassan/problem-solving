@@ -50,6 +50,15 @@ class NodeList {
 	// is met. THE core idea is : dhoro amra 2 no index e inset korbo - so amader index 1 e thamte hobe cause 1 er next 2 no index er value ke point korbe and 2 no index er
 	// inserted value er next point korbe old index 2 er value ke ---> 10===>69===>5 [dhoro 2 no index e 5 chilo and 1 no index e 10 chilo , AR 69 amra insert korte chacchi]
 	insert(index, value) {
+		// prepend
+		if (index === 0) {
+			this.append(value);
+		}
+		// append
+		if (index === this.length - 1) {
+			this.prepend(value);
+		}
+
 		// count index
 		let linkedListIndex = 0;
 
