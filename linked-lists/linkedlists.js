@@ -71,7 +71,20 @@ class NodeList {
 		//NOTE: 68 AND 69 NO LINE EXACT EI ORDER EI HOTE HOBE, TA NA HOLE AMRA currentNode.next er value ke overwrite kortam and loss it.
 		this.length++;
 	}
+	// 8,9,10
+	remove(index) {
+		let linkedListIndex = 0;
+		let currentNode = this.head;
 
+		while (linkedListIndex < index - 1) {
+			currentNode = currentNode.next;
+			linkedListIndex++;
+		}
+
+		currentNode.next = currentNode.next.next;
+
+		this.length--;
+	}
 	// print node values within an array data structur
 	printNodes() {
 		let nodeArr = [];
@@ -97,6 +110,7 @@ nodeList1.append(5); // o(1) cause we do not loo something
 nodeList1.append(16);
 nodeList1.prepend(25); // o(1)
 nodeList1.insert(2, 69);
+nodeList1.remove(2);
 console.log('singly linked lists', nodeList1);
 console.log('printNodes arr', nodeList1.printNodes());
 
